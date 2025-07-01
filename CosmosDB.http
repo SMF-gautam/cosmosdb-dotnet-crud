@@ -1,0 +1,6 @@
+@CosmosDB_HostAddress = http://localhost:5122
+
+GET {{CosmosDB_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
