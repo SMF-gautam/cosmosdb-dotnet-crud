@@ -31,7 +31,7 @@ namespace CosmosDB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Item>> CreateItem(Item newItem)
+        public async Task<ActionResult<Item>> CreateItem([FromBody]  Item newItem)
         {
             await cosmosService.AddItemAsync(newItem);
             return CreatedAtAction(nameof(GetItem), new { id = newItem.Id }, newItem);

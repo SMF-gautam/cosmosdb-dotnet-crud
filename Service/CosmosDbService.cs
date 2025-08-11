@@ -60,7 +60,8 @@ public class CosmosDbService(CosmosClient client, string databaseName, string co
 
     public async Task AddItemAsync(Item newItem)
     {
-        newItem.Id = Guid.NewGuid().ToString();
+        if (string.IsNullOrWhiteSpace(newItem.Id))
+            newItem.Id = Guid.NewGuid().ToString();
         await _container.CreateItemAsync(newItem, new PartitionKey(newItem.Id));
     }
 
